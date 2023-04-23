@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2017",
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
   },
-  "skipLibCheck": true,
-  "forceConsistentCasingInFileNames": true,
-  "experimentalDecorators": true,
-  "emitDecoratorMetadata": true,
   "exclude": ["./node_modules"]
 }

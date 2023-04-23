@@ -2,10 +2,14 @@ import "reflect-metadata";
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import connection from "./common/database";
+import { logger } from "./common/logger/logger";
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(logger)
 
 async function main() {
   try {
@@ -22,7 +26,6 @@ async function main() {
     console.error(error);
     process.exit(1);
   }
-  app.use(express.json());
 }
 
 main();

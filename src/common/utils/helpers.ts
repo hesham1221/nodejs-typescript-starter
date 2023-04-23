@@ -1,4 +1,4 @@
-import * as slug from "speakingurl";
+import slug from "speakingurl";
 import { generate } from "voucher-code-generator";
 import * as bcrypt from "bcryptjs";
 import { ImageExtensionsAsSet } from "./image.extensions";
@@ -110,12 +110,12 @@ export function getFileNameFromUrl(url: string): string {
 
 export function getHHMMSSFromSeconds(seconds: number, noSeconds?: boolean) {
   // Hours, minutes and seconds
-  var hrs = ~~(seconds / 3600);
-  var mins = ~~((seconds % 3600) / 60);
-  var secs = ~~seconds % 60;
+  let hrs = ~~(seconds / 3600);
+  let mins = ~~((seconds % 3600) / 60);
+  let secs = ~~seconds % 60;
 
   // Output like "1:01" or "4:03:59" or "123:03:59"
-  var ret = "";
+  let ret = "";
   if (hrs > 0) {
     ret +=
       "" + hrs + ` hour${hrs > 1 ? "s" : ""} ` + (mins && mins < 10 ? "0" : "");
