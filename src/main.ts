@@ -3,10 +3,10 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import connection from "./common/database";
 import { logger } from "./common/logger/logger";
-import { buildSchema } from "type-graphql";
+import { NonEmptyArray, buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
-import { HelloResolver } from "./resolvers/hello";
+import { getDataFromFileName } from "./common/config/structure";
 dotenv.config();
 
 const app: Express = express();
@@ -18,7 +18,9 @@ app.use(logger);
 async function main() {
   try {
     const schema = await buildSchema({
-      resolvers: [HelloResolver],
+      resolvers: [
+        ...(getDataFromFileName("resolvers") as NonEmptyArray<Function>),
+      ],
       emitSchemaFile: true,
       validate: false,
     });

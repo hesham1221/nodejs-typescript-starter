@@ -38,6 +38,10 @@ export function isImage(filePath: string): boolean {
   );
 }
 
+export function capitalizeFirstLetter(string: string): string {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export function isVideo(filePath: string): boolean {
   if (!filePath) return false;
   return VideoExtensionsAsSet.has(
@@ -99,7 +103,7 @@ export function trimAllSpaces(text: string): string {
 }
 
 export function removeFieldsFromObject(obj: object, fields: string[]) {
-  let newObj:any = { ...obj };
+  let newObj: any = { ...obj };
   for (const key in newObj) if (fields.includes(key)) delete newObj[key];
   return newObj;
 }
