@@ -1,6 +1,7 @@
 // @/connection.ts
-import { Sequelize } from "sequelize-typescript";
+import { ModelCtor, Sequelize } from "sequelize-typescript";
 import { env } from "../config/env";
+import { getDataFromFileName } from "../config/structure";
 
 const connection = new Sequelize({
   dialect: "postgres",
@@ -9,7 +10,7 @@ const connection = new Sequelize({
   password: env.DB_PASSWORD,
   database: env.DB_NAME,
   logging: false,
-  models: [],
+  models: [...(getDataFromFileName("models") as ModelCtor[])],
   sync: {
     alter: true, // Note: Do not use this in production use migrations instead
   },

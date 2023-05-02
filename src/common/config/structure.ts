@@ -21,7 +21,7 @@ export function getDataFromFileName(
 ): NonEmptyArray<Function> | Array<Function> {
   const returnedData = [];
   for (let fileName of data[name]) {
-    if (fileName === "index.ts") continue;
+    if (fileName === "index.ts" || !fileName.endsWith("ts")) continue;
     let fileData = require(path.join(paths[`${name}Path`], fileName));
     returnedData.push(fileData);
   }
@@ -32,4 +32,3 @@ export function getDataFromFileName(
     return dataFiles[`${className}`];
   });
 }
-

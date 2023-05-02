@@ -4,6 +4,7 @@
 # -----------------------------------------------
 
 type Query {
+  fanto: String!
   hello: String!
   hola: String!
 }
